@@ -54,10 +54,10 @@ public class DoiFetcher implements IdBasedFetcher {
                 // BibTeX entry
                 return BibtexParser.singleFromString(cleanupEncoding(bibtexString), preferences);
             } else {
-                throw new FetcherException(Localization.lang("Invalid_DOI:_'%0'.", identifier));
+                throw new FetcherException(String.format("Invalid DOI: '%s'.", identifier), Localization.lang("Invalid_DOI:_'%0'.", identifier));
             }
         } catch (IOException e) {
-            throw new FetcherException(Localization.lang("Invalid URL"), e);
+            throw new FetcherException("Invalid URL", Localization.lang("Invalid URL"), e);
         }
     }
 }

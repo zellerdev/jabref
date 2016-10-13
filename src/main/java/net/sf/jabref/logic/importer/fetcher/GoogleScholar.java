@@ -21,6 +21,7 @@ import net.sf.jabref.logic.importer.ImportFormatPreferences;
 import net.sf.jabref.logic.importer.ParserResult;
 import net.sf.jabref.logic.importer.SearchBasedFetcher;
 import net.sf.jabref.logic.importer.fileformat.BibtexParser;
+import net.sf.jabref.logic.l10n.Localization;
 import net.sf.jabref.logic.net.URLDownload;
 import net.sf.jabref.model.entry.BibEntry;
 import net.sf.jabref.model.entry.FieldName;
@@ -90,7 +91,7 @@ public class GoogleScholar implements FulltextFetcher, SearchBasedFetcher {
                 }
             }
         } catch (URISyntaxException e) {
-            throw new FetcherException("Building URI failed.", e);
+            throw new FetcherException("Building URI failed.", Localization.lang("Building URI failed."), e);
         }
 
         return pdfLink;
@@ -126,7 +127,7 @@ public class GoogleScholar implements FulltextFetcher, SearchBasedFetcher {
 
             return foundEntries;
         } catch (IOException | URISyntaxException e) {
-            throw new FetcherException("Error while fetching from "+getName(), e);
+            throw new FetcherException("Error while fetching from "+getName(), Localization.lang("Error while fetching from %0", getName()), e);
         }
     }
 
@@ -147,12 +148,12 @@ public class GoogleScholar implements FulltextFetcher, SearchBasedFetcher {
         BibtexParser parser = new BibtexParser(importFormatPreferences);
         ParserResult result = parser.parse(new StringReader(downloadedContent));
         if ((result == null) || (result.getDatabase() == null)) {
-            throw new FetcherException("Parsing entries from Google Scholar bib file failed.");
+            throw new FetcherException("Parsing entries from Google Scholar bib file failed.", Localization.lang("Parsing entries from Google Scholar bib file failed."));
         } else {
             Collection<BibEntry> entries = result.getDatabase().getEntries();
             if (entries.size() != 1) {
                 LOGGER.debug(entries.size() + " entries found! (" + link + ")");
-                throw new FetcherException("Parsing entries from Google Scholar bib file failed.");
+                throw new FetcherException("Parsing entries from Google Scholar bib file failed.", Localization.lang("Parsing entries from Google Scholar bib file failed."));
             } else {
                 BibEntry entry = entries.iterator().next();
                 return entry;
@@ -169,7 +170,7 @@ public class GoogleScholar implements FulltextFetcher, SearchBasedFetcher {
                 cookie.setValue(cookie.getValue() + ":CF=4");
             }
         } catch (IOException e) {
-            throw new FetcherException("Cookie configuration for Google Scholar failed.", e);
+            throw new FetcherException("Cookie configuration for Google Scholar failed.", Localization.lang("Cookie configuration for Google Scholar failed."), e);
         }
     }
 }

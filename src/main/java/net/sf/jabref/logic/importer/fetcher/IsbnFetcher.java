@@ -45,7 +45,7 @@ public class IsbnFetcher implements IdBasedParserFetcher {
     public URL getURLForID(String identifier) throws URISyntaxException, MalformedURLException, FetcherException {
         ISBN isbn = new ISBN(identifier);
         if (!isbn.isValid()) {
-            throw new FetcherException(Localization.lang("Invalid_ISBN:_'%0'.", identifier));
+            throw new FetcherException(String.format("Invalid_ISBN:_'%s'.", identifier), Localization.lang("Invalid_ISBN:_'%0'.", identifier));
         }
 
         URIBuilder uriBuilder = new URIBuilder("http://www.ebook.de/de/tools/isbn2bibtex");

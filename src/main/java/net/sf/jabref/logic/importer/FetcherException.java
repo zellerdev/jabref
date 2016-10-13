@@ -16,4 +16,8 @@ public class FetcherException extends JabRefException {
     public FetcherException(String errorMessage, String localizedMessage, Throwable cause) {
         super(errorMessage, localizedMessage, cause);
     }
+
+    public FetcherException(String message, String localizedMessage) {
+        super(message, localizedMessage);
+    }
 }

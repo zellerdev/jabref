@@ -24,6 +24,7 @@ import net.sf.jabref.logic.importer.IdBasedFetcher;
 import net.sf.jabref.logic.importer.ImportFormatPreferences;
 import net.sf.jabref.logic.importer.SearchBasedFetcher;
 import net.sf.jabref.logic.importer.util.OAI2Handler;
+import net.sf.jabref.logic.l10n.Localization;
 import net.sf.jabref.logic.util.DOI;
 import net.sf.jabref.logic.util.io.XMLUtil;
 import net.sf.jabref.model.database.BibDatabaseMode;
@@ -174,7 +175,7 @@ public class ArXiv implements FulltextFetcher, SearchBasedFetcher, IdBasedFetche
                 return builder.parse(connection.getInputStream());
             }
         } catch (SAXException | ParserConfigurationException | IOException | URISyntaxException exception) {
-            throw new FetcherException("arXiv API request failed", exception);
+            throw new FetcherException("arXiv API request failed", Localization.lang("arXiv API request failed"), exception);
         }
     }
 

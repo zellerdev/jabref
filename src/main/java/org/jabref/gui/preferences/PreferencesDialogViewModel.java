@@ -52,6 +52,7 @@ public class PreferencesDialogViewModel extends AbstractViewModel {
                 new GroupsTabView(preferences),
                 new EntryEditorTabView(preferences),
                 new CitationKeyPatternTabView(preferences),
+                new BibSonomyTabView(preferences),
                 new ImportTabView(preferences),
                 new ExportSortingTabView(preferences),
                 new NameFormatterTabView(preferences),

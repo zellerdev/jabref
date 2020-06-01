@@ -6,5 +6,6 @@ package org.jabref.gui;
 public enum SidePaneType {
     OPEN_OFFICE,
     WEB_SEARCH,
-    GROUPS
+    GROUPS,
+    BIBSONOMY
 }

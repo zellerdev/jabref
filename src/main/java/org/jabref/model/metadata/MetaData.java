@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Vector;
 
 import org.jabref.model.bibtexkeypattern.AbstractCitationKeyPattern;
 import org.jabref.model.bibtexkeypattern.DatabaseCitationKeyPattern;
@@ -45,6 +46,7 @@ public class MetaData {
     private final Map<EntryType, String> citeKeyPatterns = new HashMap<>(); // <BibType, Pattern>
     private final Map<String, String> userFileDirectory = new HashMap<>(); // <User, FilePath>
     private final Map<String, Path> laTexFileDirectory = new HashMap<>(); // <User, FilePath>
+    private final Map<String, Vector<String>> bibsonomyData = new HashMap<>();
     private GroupTreeNode groupsRoot;
     private Charset encoding;
     private SaveOrderConfig saveOrderConfig;
@@ -349,4 +351,9 @@ public class MetaData {
         return Objects.hash(groupsRoot, encoding, saveOrderConfig, citeKeyPatterns, userFileDirectory,
                 defaultCiteKeyPattern, saveActions, mode, isProtected, defaultFileDirectory);
     }
+
+    public Vector<String> getBibsonomyData(String key){
+        return bibsonomyData.get(key);
+    }
+
 }

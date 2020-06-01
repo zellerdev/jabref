@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 import org.jabref.Globals;
+import org.jabref.gui.bibsonomy.BibSonomySidePane;
 import org.jabref.gui.groups.GroupSidePane;
 import org.jabref.gui.importer.fetcher.WebSearchPane;
 import org.jabref.gui.openoffice.OpenOfficeSidePanel;
@@ -32,7 +33,11 @@ public class SidePaneManager {
         Stream.of(
                 new GroupSidePane(this, preferences, frame.getDialogService()),
                 new WebSearchPane(this, preferences, frame),
-                new OpenOfficeSidePanel(this, preferences, frame))
+                new OpenOfficeSidePanel(this, preferences, frame)
+
+                ,new BibSonomySidePane(this, preferences, frame) //TODO
+
+        )
               .forEach(pane -> components.put(pane.getType(), pane));
 
         if (preferences.getBoolean(JabRefPreferences.GROUP_SIDEPANE_VISIBLE)) {
@@ -45,6 +50,11 @@ public class SidePaneManager {
 
         if (preferences.getBoolean(JabRefPreferences.WEB_SEARCH_VISIBLE)) {
             show(SidePaneType.WEB_SEARCH);
+        }
+
+        if(false){
+            //TODO
+            show(SidePaneType.BIBSONOMY);
         }
 
         updateView();

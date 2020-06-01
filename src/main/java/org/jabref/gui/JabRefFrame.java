@@ -868,6 +868,7 @@ public class JabRefFrame extends BorderPane {
         SidePaneComponent webSearch = sidePaneManager.getComponent(SidePaneType.WEB_SEARCH);
         SidePaneComponent groups = sidePaneManager.getComponent(SidePaneType.GROUPS);
         SidePaneComponent openOffice = sidePaneManager.getComponent(SidePaneType.OPEN_OFFICE);
+        SidePaneComponent bibsonomy = sidePaneManager.getComponent(SidePaneType.BIBSONOMY);
 
         view.getItems().add(new SeparatorMenuItem());
         view.setOnShowing(event -> {
@@ -876,6 +877,7 @@ public class JabRefFrame extends BorderPane {
                     factory.createCheckMenuItem(webSearch.getToggleAction(), webSearch.getToggleCommand(), sidePaneManager.isComponentVisible(SidePaneType.WEB_SEARCH)),
                     factory.createCheckMenuItem(groups.getToggleAction(), groups.getToggleCommand(), sidePaneManager.isComponentVisible(SidePaneType.GROUPS)),
                     factory.createCheckMenuItem(openOffice.getToggleAction(), openOffice.getToggleCommand(), sidePaneManager.isComponentVisible(SidePaneType.OPEN_OFFICE)),
+                    factory.createCheckMenuItem(bibsonomy.getToggleAction(), bibsonomy.getToggleCommand(), sidePaneManager.isComponentVisible(SidePaneType.BIBSONOMY)),
 
                     new SeparatorMenuItem(),
 
